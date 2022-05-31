@@ -183,6 +183,11 @@ app.get("/view-student", (req, res) => {
   })
 });
 
+app.get("/user", async (req, res) => {
+  res.json({
+      user: await peerUser.findOne({ peerId: req.query.peer }).exec(),
+  });
+});
 
 app.get("/view-staff", (req, res) => {
  
