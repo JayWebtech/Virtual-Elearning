@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/iziToast.min.css">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link rel="icon" type="icon" href="assets/logo.png">
+    <script src="lib/jquery.min.js"></script>
+    <script src="dist/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #e7ffef;">
+
+    <section id="login">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                        <div class="box wow bounceInLeft">
+                            <h3>Student Login</h3>
+                            <form action="/student-auth" method="POST">
+                                <label for="">Email</label>
+                                <input type="text" class="form-control" name="email" placeholder="Enter Email">
+                                <label for="">Password</label>
+                                <input type="password" class="form-control" name="password"  placeholder="Enter Password">
+                                <button class="btn btn-success btn-lg btn-block"><span class="fa fa-sign-in"></span> Sign in</button>
+                            </form>
+                        </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="box-2">
+                        <center><img class="wow bounceInUp" src="../assets/login-2.png" alt=""></center>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <% if(userName == "false") { %>
+        <script>
+            iziToast.error({
+            title: 'Error',
+            message: 'Wrong Login Details',
+            position: 'topLeft',
+            animateInside: true,
+            });
+        </script>
+        
+           
+        <% }else{ %>
+           
+       <% } %>
+    <script>
+      
+        // if(=="true"){
+        //         window.open('/staff/dashboard/','_self');
+        //     }else{ 
+        //         iziToast.error({
+        //         title: 'Error',
+        //         message: 'Wrong Login Details',
+        //         position: 'topLeft',
+        //         animateInside: true,
+        //         });
+        //     }
+    </script>
+    <!-- <script>
+        const form = document.getElementById("login");
+        form.addEventListener('submit', login);
+        async function login(event){
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const result = await fetch("/api/staff-login", {
+                method: "POST",
+                headers: {
+                    'Content-type':'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            }).then((res)=> res.json());
+
+            if(result.status == "ok"){
+                window.open('/staff/dashboard/:'+result.data.staff._id,'_self');
+            }else{ 
+                iziToast.error({
+                title: 'Error',
+                message: 'Wrong Login Details',
+                position: 'topLeft',
+                animateInside: true,
+                });
+            }
+        }
+    </script> -->
+    <script src="lib/wow/wow.min.js"></script> 
+    <script>
+        // Initiate the wowjs animation library
+        new WOW().init();
+    </script>
+</body>
+</html>

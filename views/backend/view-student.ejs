@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/iziToast.min.css">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link rel="icon" type="icon" href="assets/logo.png">
+    <script src="lib/jquery.min.js"></script>
+    <script src="dist/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        html,body{
+            box-sizing: border-box;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+        <div class="container-fluid h-100" id="dashboard">
+            <div class="row h-100">
+                <div class="col-md-2">
+                    <div class="left-bar">
+                        <h6>NILEST VIRTUAL <br>E-LEARNING</h6>
+                        <div class="nav-list">
+                            <ul>
+                                <li><a href="/dashboard"><span class="fa fa-dashboard"></span> Dashboard</a></li>
+                                <li><a href="/register"><span class="fa fa-user"></span> Register Staff</a></li>
+                                <li><a href="/student"><span class="fa fa-user"></span> Register Student</a></li>
+                                <li><a href="/view-student" class="active"><span class="fa fa-drivers-license-o"></span> View Student</a></li>
+                                <li><a href="/view-staff"><span class="fa fa-drivers-license-o"></span> View Staff</a></li>
+                                <li><a href="/view-class"><span class="fa fa-desktop"></span> View Classes</a></li>
+                                <li><a href="/"><span class="fa fa-sign-out"></span> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="main">
+                       <h4 style="font-family: Bold;color: #81b687;"><span class="fa fa-user"></span> Registered Students</h4>
+                    </div>
+                   
+                    <div class="recent">
+                    <table class="table shadow">
+                        <thead>
+                          <tr>
+                            <th scope="col">S/N</th>
+                            <th scope="col">Student Name</th>
+                            <th scope="col">Department</th>
+                            <th scope="col">Level</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <% var i = 1; %>
+                            <% if(student.length>0) { %>
+                                <% student.forEach(student => { %>
+                          <tr>
+                            <td scope="row"><%= i++; %></td>
+                            <td><%= student.name %></td>
+                            <td><%= student.dept %></td>
+                            <td><%= student.level %></td>
+                            <td><%= student.email %></td>
+                            <td><a class="delete" data-doc="<%= student._id %>"><button class="btn btn-primary btn-sm">Delete</button></a></td>
+                          </tr>
+                          <% }) %>
+                          <% }else { %>
+                            <p>No Students Records to Display</p>
+                            <% } %>
+                        </tbody>
+                      </table>
+                    </div>
+
+
+
+                </div>
+
+                
+            </div>
+        </div>
+        <script>
+            const trashcan =  document.querySelector('a.delete');
+            trashcan.addEventListener('click', (e) => {
+                const endpoint = `/view-student/${trashcan.dataset.doc}`;
+                fetch(endpoint,{
+                    method: 'DELETE'
+                })
+                .then((response) => response.json())
+                .then((data) => window.location.href = data.redirect)
+                .catch(err => console.log(err));
+            })
+        </script> 
+</body>
+</html>

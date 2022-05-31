@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/iziToast.min.css">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link rel="icon" type="icon" href="assets/logo.png">
+    <script src="lib/jquery.min.js"></script>
+    <script src="dist/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        html,body{
+            box-sizing: border-box;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+
+        <div class="container-fluid h-100" id="dashboard">
+            <div class="row h-100">
+                <div class="col-md-2">
+                    <div class="left-bar">
+                        <h6>NILEST VIRTUAL <br>E-LEARNING</h6>
+                        <div class="nav-list">
+                            <ul>
+                                <li><a href="/dashboard"><span class="fa fa-dashboard"></span> Dashboard</a></li>
+                                <li><a href="/register"><span class="fa fa-user"></span> Register Staff</a></li>
+                                <li><a href="/student" class="active"><span class="fa fa-user"></span> Register Student</a></li>
+                                <li><a href="/view-student"><span class="fa fa-drivers-license-o"></span> View Student</a></li>
+                                <li><a href="/view-staff"><span class="fa fa-drivers-license-o"></span> View Staff</a></li>
+                                <li><a href="/view-class"><span class="fa fa-desktop"></span> View Classes</a></li>
+                                <li><a href="/"><span class="fa fa-sign-out"></span> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                   <div class="register shadow">
+                       <h4>REGISTER STUDENT</h4>
+                       <form action="/student" method="POST">
+                           <div class="row">
+
+                            <div class="form-group col-md-6">
+                           <label for="">Student Name</label>
+                           <input type="text" name="name" class="form-control" placeholder="Enter Student Name">
+                           </div>
+        
+                           <div class="form-group col-md-6">
+                           <label for="">Staff Department</label>
+                           <select name="dept" class="form-control">
+                            <option value="">Select Department</option>
+                            <option value="COMPUTER SCIENCE">Computer Science</option>
+                            <option value="SCIENCE LABORATORY TECHNOLOGY">Science Laboratory Technology</option>
+                            <option value="PRODUCTION MANAGEMENT">Production Management</option>
+                            <option value="POLYMER TECHNOLOGY">Polymer Technology</option>
+                            <option value="INDUSTRIAL CHEMICAL PROCESSING TECHNOLOGY">Industrial Chemical Processing Technology</option>
+                            <option value="FOOTWEAR MANUFACTURING">Footwear Manufacturing</option>
+                            <option value="MICROBIOLOGY">Microbiology</option>
+                            <option value="BIOCHEMISTRY">Biochemistry</option>
+                            <option value="CHEMISTRY">Chemistry</option>
+                            <option value="LEATHER TECHNOLOGY">Leather Technology</option>
+                           </select>
+                           </div>
+                           <div class="form-group col-md-6">
+                           <label for="">Level</label>
+                           <select name="level" id="" class="form-control">
+                               <option value="ND 1">ND 1</option>
+                               <option value="ND 2">ND 2</option>
+                               <option value="HND 1">HND 1</option>
+                               <option value="HND 2">HND 2</option>
+                           </select>
+                           </div>
+                           <div class="form-group col-md-6">
+                           <label for="">Email</label>
+                           <input type="email" class="form-control" name="email" placeholder="Enter Email">
+                           </div>
+                           <div class="form-group col-md-12">
+                           <label for="">Password</label>
+                           <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                           </div>
+                           <div class="form-group col-md-12">
+                               <br>
+                           <button class="btn btn-success btn-lg btn-block">Register Student</button>
+                           </div>
+                       </form>
+                   </div>
+                </div>
+                </div>
+
+                
+            </div>
+        </div>
+      
+</body>
+</html>

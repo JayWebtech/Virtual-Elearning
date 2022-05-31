@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css" />
+    <link href="../lib/animate/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../dist/css/iziToast.min.css">
+    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../lib/animate/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../bootstrap-icons/bootstrap-icons.css">
+    <link rel="icon" type="icon" href="../assets/logo.png">
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../dist/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="../https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        html,body{
+            box-sizing: border-box;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+        <div class="container-fluid h-100" id="dashboard">
+            <div class="row h-100">
+                <div class="col-md-2">
+                    <div class="left-bar">
+                        <h6>NILEST VIRTUAL <br>E-LEARNING</h6>
+                        <div class="nav-list">
+                            <ul>
+                                <li><a href="/staff/dashboard"><span class="fa fa-dashboard"></span> Dashboard</a></li>
+                                <li><a href="/staff/create"><span class="fa fa-user"></span> Create Class</a></li>
+                                <li><a href="/staff/view-class" class="active"><span class="fa fa-desktop"></span> View Classes</a></li>
+                               
+                                <li><a href="/logout"><span class="fa fa-sign-out"></span> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="main">
+                       <h6><span class="fa fa-dashboard"></span> Staff Dashboard / View Classes</h6>
+                    </div>
+                    
+                    <h2>View Classes</h2>
+                    <br>
+                    <% if(output.length>0) { %>
+                        <% output.forEach(output => { %>
+                    <div class="view shadow">
+                        <h4><%= output.course %></h4>
+                        <h5><%= output.dept %></h5>
+                        <h6><%= output.level %></h6>
+                        <p>
+                            <b>Time: </b><span class="time"> <%= output.classtime %> </span> - <b>Date: </b> 
+                            <span id="date">
+                                <%  if(output.classdate==currentDate) { %>
+                                            Today (<%= output.classdate %>)
+                                        <%   }else{  %>
+                                                <%= output.classdate %> 
+                                    <% } %>
+                            </span></p>
+                            <%  if(output.classdate<currentDate) { %>
+                                <button class="btn btn-success btn-sm" disabled><span class="bi bi-arrow-right-circle"></span>  Date Passed</button> 
+                                <%   }else if(output.classdate>currentDate){  %>
+                                    <a href="#"> <button class="btn btn-success btn-sm" disabled><span class="bi bi-arrow-right-circle"></span>  Date no reached</button></a> 
+                           
+                            <%   }else{  %>
+                                <a href="/staff/room/?room=<%= output.class_link %>"> <button class="btn btn-success btn-sm"><span class="bi bi-arrow-right-circle"></span>  Start class</button></a> 
+                        <% } %>
+                            
+
+
+                        <a class="delete" data-doc="<%= output._id %>">  <button class="btn btn-danger btn-sm"><span class="bi bi-trash"></span>  Delete Class</button></a>
+                    </div>
+
+                    <% }) %>
+                          <% }else { %>
+                            <p>No Classes</p>
+                            <% } %>
+
+
+                </div>
+
+                
+            </div>
+        </div>
+        
+
+        <% if(userName == "false") { %>
+            <script>
+                iziToast.info({
+                title: '',
+                message: 'Choose another time or date',
+                position: 'topRight',
+                animateInside: true,
+                });
+            </script>
+            <% }else if(userName=="success"){ %>
+               
+                <script>
+                    iziToast.success({
+                    title: '',
+                    message: 'Class Created Successfully',
+                    position: 'topRight',
+                    animateInside: true,
+                    });
+                </script>
+                
+               
+            <% }else{ %>
+               
+           <% } %>
+
+           <script>
+            const trashcan =  document.querySelector('a.delete');
+            trashcan.addEventListener('click', (e) => {
+                const endpoint = `/staff/view-class/${trashcan.dataset.doc}`;
+                fetch(endpoint,{
+                    method: 'DELETE'
+                })
+                .then((response) => response.json())
+                .then((data) => window.location.href = data.redirect)
+                .catch(err => console.log(err));
+            })
+        </script>   
+
+        
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css" />
+    <link href="../lib/animate/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../dist/css/iziToast.min.css">
+    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../lib/animate/animate.min.css" rel="stylesheet">
+    <link rel="icon" type="icon" href="../assets/logo.png">
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../dist/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="../https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        html,body{
+            box-sizing: border-box;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+        <div class="container-fluid h-100" id="dashboard">
+            <div class="row h-100">
+                <div class="col-md-2">
+                    <div class="left-bar">
+                        <h6>NILEST VIRTUAL <br>E-LEARNING</h6>
+                        <div class="nav-list">
+                            <ul>
+                                <li><a href="/student/dashboard" class="active"><span class="fa fa-dashboard"></span> Dashboard</a></li>
+                              
+                                <li><a href="/student/view-class"><span class="fa fa-desktop"></span> View Classes</a></li>
+                                <li><a href="/logout"><span class="fa fa-sign-out"></span> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="main">
+                       <h6><span class="fa fa-dashboard"></span> Student Dashboard</h6>
+                    </div>
+                    
+                    <h1>Hello <%= id.name %></h1>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="box-1">
+                                <span class="fa fa-user"></span>
+                                <h5>Total Classes</h5>
+                                <h6>56</h6>
+                                <div class="overlay"></div>
+                                <div class="overlay-2"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="box-2">
+                                <span class="fa fa-check-square-o"></span>
+                                <h5>Today's Class</h5>
+                                <h6>59</h6>
+                                <div class="overlay"></div>
+                                <div class="overlay-2"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="box-3">
+                                <span class="fa fa-delicious"></span>
+                                <h5>Ongoing Classes</h5>
+                                <h6>34</h6>
+                                <div class="overlay"></div>
+                                <div class="overlay-2"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="box-4">
+                                <span class="fa fa-dedent"></span>
+                                <h5>All Students</h5>
+                                <h6>34</h6>
+                                <div class="overlay"></div>
+                                <div class="overlay-2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                
+            </div>
+        </div>
+      
+</body>
+</html>
