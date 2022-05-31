@@ -18,7 +18,8 @@ const videoGrid = document.getElementById("video-grid");
 // const name = prompt("Your name");
 const myPeer = new Peer(undefined, {
   host: '/',
-  port: '3001'
+  port: '443',
+  path: "/peerjs"
   // port: "3000",
 });
 var Peer_ID;
